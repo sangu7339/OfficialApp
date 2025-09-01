@@ -1,0 +1,4 @@
+security:
+  jwt:
+    secret: "replace-with-32plus-byte-strong-secret-1234567890ABCDEF"
+    expiration-ms: 86400000
