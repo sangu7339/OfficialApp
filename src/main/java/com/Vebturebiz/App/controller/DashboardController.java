@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 
-@RestController @RequestMapping("/dashboard") @RequiredArgsConstructor
+@RestController 
+@RequestMapping("/dashboard")
+@RequiredArgsConstructor
 public class DashboardController {
   private final EmployeeRepository employeeRepo;
   private final AttendanceRepository attendanceRepo;
@@ -30,7 +32,7 @@ public class DashboardController {
     String username = auth.getName();
     var emp = employeeRepo.findAll().stream().filter(e -> e.getUser().getUsername().equals(username)).findFirst().orElseThrow();
     Map<String,Object> m = new HashMap<>();
-    m.put("empId", emp.getEmpId());
+    m.put("empId", emp.getEmpId());		
     m.put("attendance", attendanceRepo.findByEmployee_EmpId(emp.getEmpId()));
     m.put("leaves", leaveRepo.findByEmployee_EmpId(emp.getEmpId()));
     m.put("performance", performanceRepo.findByEmployee_EmpId(emp.getEmpId()));

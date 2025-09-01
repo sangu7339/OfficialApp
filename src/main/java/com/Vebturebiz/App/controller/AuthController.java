@@ -27,4 +27,9 @@ public class AuthController {
       return ResponseEntity.status(401).build();
     }
   }
+  @GetMapping("/hello")
+ public String hello() {
+	  return "hello";
+	  
+  }
 }
